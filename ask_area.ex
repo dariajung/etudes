@@ -28,7 +28,12 @@ defmodule AskArea do
 	@spec get_number(String.t()) :: number()
 	def get_number(prompt) do
 		input = IO.gets("Enter #{prompt} > ")
-		String.to_integer(String.strip(input))
+		_input = String.strip(input)
+		cond do
+			 Regex.match?(~r/^[+-]?\d+$/, _input) -> String.to_integer(_input)
+			 Regex.match?(~r/^[+-]\d+\.\d+$/, _input) -> String.to_float(_input)
+			 true -> :error
+		end
 	end
 
 	def get_dimensions(prompt1, prompt2) do
