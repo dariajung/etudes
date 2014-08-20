@@ -12,7 +12,9 @@ defmodule Dates do
 						false -> 28
 					end
 		days_month = [31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-		month_total(month, days_month, date)
+		#month_total(month, days_month, date)
+		{ _m, _ } = Enum.split(days_month, month - 1)
+		List.foldl(_m, 0, fn(x, acc) -> x + acc end) + date
 	end
 
 	def month_total(month, month_list, accum) do
