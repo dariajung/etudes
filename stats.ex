@@ -25,4 +25,17 @@ defmodule Stats do
 		end
 	end
 	
+	@spec mean(list(number)) :: number()
+	def mean(list) do
+		sum = List.foldl(list, 0, fn (x, acc) -> x + acc end)
+		sum / Enum.count(list)
+	end
+
+	def stdv(list) do
+		{sum, sum_of_squares} = List.foldl(list, {0, 0}, 
+												 fn (x, {s, sum_sq}) -> {x + s, x * x + sum_sq} end)
+		n = Enum.count(list)
+		temp = (n * sum_of_squares) - (sum * sum)
+		:math.sqrt(temp / (n * (n - 1)))
+	end
 end
