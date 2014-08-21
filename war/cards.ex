@@ -3,7 +3,11 @@ defmodule Cards do
 	def make_deck() do
 		for suite <- ["Clubs", "Diamonds", "Hearts", "Spades"], 
 				card <- ["A", "2", "3", "4", "5", "6", "7", "8", "9",
-								 "10", "J", "Q", "K"], do: {suite, card}
+								 "10", "J", "Q", "K"], do: {card, suite}
+	end
+
+	def make_deck(cards, suites) do
+		for card <- cards, suite <- suites, do: {card, suite}
 	end
 
 	@doc """
