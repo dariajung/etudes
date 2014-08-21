@@ -11,7 +11,7 @@ defmodule Player do
 			{:give, num_cards, dealer_pid} -> 
 				{ payload, new_hand } = Enum.split(hand, num_cards)
 			  send dealer_pid, {:take, payload, player_pid }
-			{:take, loot, dealer_id} -> 
+			{:take, loot, dealer_pid} -> 
 					new_hand = hand ++ loot
 			    send dealer_pid, {:received_cards, player_pid}
 					IO.puts("New hand for Player #{inspect(player_pid)} is #{inspect(new_hand)}")
