@@ -1,5 +1,5 @@
 defmodule Cards do
-	@spec make_dec() :: list(tuple)
+	@spec make_deck() :: list(tuple)
 	def make_deck() do
 		for suite <- ["Clubs", "Diamonds", "Hearts", "Spades"], 
 				card <- ["A", "2", "3", "4", "5", "6", "7", "8", "9",
