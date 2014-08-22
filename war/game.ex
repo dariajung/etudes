@@ -11,8 +11,6 @@ defmodule Game do
 		half = div(Enum.count(shuffled), 2)
 		# split takes an int, can't take float
 		{ hand1, hand2 } = Enum.split(shuffled, half)
-		# IO.puts("#{inspect(hand1)}")
-		# IO.puts("#{inspect(hand2)}")
 		player1 = spawn(Player, :begin, [hand1])
 		player2 = spawn(Player, :begin, [hand2])
 		play([player1, player2], :pre_battle, [], [], 0, [])
